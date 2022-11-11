@@ -3,8 +3,8 @@ import {pool} from '../database/db.js'
 export const getProducts = async (req, res)=> {
     try{
         // throw new Error('test') prueba de error 
-        // const [product] = await pool.query('SELECT product.name, product.category , category.name FROM product JOIN category ON product.category=category.id')
-        const [product] = await pool.query('SELECT * FROM category')
+        const [product] = await pool.query('SELECT p.name, p.category , c.name FROM product p JOIN category c ON p.category=c.id')
+        // const [product] = await pool.query('SELECT * FROM category')
         res.json(product)
     }catch(errro){
         return res.status(500).json({
