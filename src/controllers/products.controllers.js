@@ -5,7 +5,7 @@ export const getProducts = async (req, res)=> {
         // throw new Error('test')
         const [produ] = await pool.query('SELECT * FROM product p, category c WHERE p.category=c.id')
         // const [product] = await pool.query('SELECT * FROM category')
-        res.json(produ)
+        res.json(produ[0])
     }catch(errro){
         return res.status(500).json({
             message: 'error db'
