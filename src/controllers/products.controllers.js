@@ -2,8 +2,8 @@ import {pool} from '../database/db.js'
 
 export const getProducts = async (req, res)=> {
     try{
-        // throw new Error('test') prueba de error 
-        const [produ] = await pool.query('SELECT * FROM product p INNER JOIN category c ON p.category=c.id')
+        // throw new Error('test')
+        const [produ] = await pool.query('SELECT * FROM product p, category c WHERE p.category=c.id')
         // const [product] = await pool.query('SELECT * FROM category')
         res.json(produ)
     }catch(errro){
